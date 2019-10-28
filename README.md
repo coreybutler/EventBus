@@ -1,7 +1,13 @@
 EventBus
 ======
 
-[![GoDoc](https://godoc.org/github.com/asaskevich/EventBus?status.svg)](https://godoc.org/github.com/asaskevich/EventBus) [![Coverage Status](https://img.shields.io/coveralls/asaskevich/EventBus.svg)](https://coveralls.io/r/asaskevich/EventBus?branch=master) [![Build Status](https://travis-ci.org/asaskevich/EventBus.svg)](https://travis-ci.org/asaskevich/EventBus)
+[![GoDoc](https://godoc.org/github.com/coreybutler/EventBus?status.svg)](https://godoc.org/github.com/coreybutler/EventBus) [![Coverage Status](https://img.shields.io/coveralls/coreybutler/EventBus.svg)](https://coveralls.io/r/coreybutler/EventBus?branch=master) [![Build Status](https://travis-ci.org/coreybutler/EventBus.svg)](https://travis-ci.org/coreybutler/EventBus)
+
+This is a modified version of [asaskevich/EventBus](github.com/asaskevich/EventBus). The primary differences are:
+
+1. Removed all references to [fmt](https://golang.org/pkg/fmt/), replacing with [log](https://golang.org/pkg/log/) or [errors](https://golang.org/pkg/errors/) when relevant. This reduces build output by ~7MB.
+1. Converted to a go module.
+1. Travic-CI updates.
 
 Package EventBus is the little and lightweight eventbus with async compatibility for GoLang.
 
@@ -9,7 +15,7 @@ Package EventBus is the little and lightweight eventbus with async compatibility
 Make sure that Go is installed on your computer.
 Type the following command in your terminal:
 
-	go get github.com/asaskevich/EventBus
+	go get github.com/coreybutler/EventBus
 
 After it the package is ready to use.
 

@@ -1,7 +1,7 @@
 package EventBus
 
 import (
-	"fmt"
+	"errors"
 	"reflect"
 	"sync"
 )
@@ -45,7 +45,7 @@ type eventHandler struct {
 	flagOnce      bool
 	async         bool
 	transactional bool
-	sync.Mutex // lock for an event handler - useful for running async callbacks serially
+	sync.Mutex    // lock for an event handler - useful for running async callbacks serially
 }
 
 // New returns new EventBus with empty handlers.
@@ -63,7 +63,7 @@ func (bus *EventBus) doSubscribe(topic string, fn interface{}, handler *eventHan
 	bus.lock.Lock()
 	defer bus.lock.Unlock()
 	if !(reflect.TypeOf(fn).Kind() == reflect.Func) {
-		return fmt.Errorf("%s is not of type reflect.Func", reflect.TypeOf(fn).Kind())
+		return errors.New(reflect.TypeOf(fn).Kind().String() + " is not of type reflect.Func")
 	}
 	bus.handlers[topic] = append(bus.handlers[topic], handler)
 	return nil
@@ -124,7 +124,7 @@ func (bus *EventBus) Unsubscribe(topic string, handler interface{}) error {
 		bus.removeHandler(topic, bus.findHandlerIdx(topic, reflect.ValueOf(handler)))
 		return nil
 	}
-	return fmt.Errorf("topic %s doesn't exist", topic)
+	return errors.New("topic " + topic + " doesn't exist")
 }
 
 // Publish executes callback defined for a topic. Any additional argument will be transferred to the callback.

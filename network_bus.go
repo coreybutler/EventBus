@@ -2,7 +2,6 @@ package EventBus
 
 import (
 	"errors"
-	"fmt"
 	"net"
 	"net/http"
 	"net/rpc"
@@ -56,7 +55,7 @@ func (networkBus *NetworkBus) Start() error {
 		server.HandleHTTP(networkBus.path, "/debug"+networkBus.path)
 		l, e := net.Listen("tcp", networkBus.address)
 		if e != nil {
-			err = fmt.Errorf("listen error: %v", e)
+			err = e
 		}
 		service.wg.Add(1)
 		go http.Serve(l, nil)

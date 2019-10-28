@@ -2,7 +2,7 @@ package EventBus
 
 import (
 	"errors"
-	"fmt"
+	"log"
 	"net"
 	"net/http"
 	"net/rpc"
@@ -63,7 +63,7 @@ func (server *Server) rpcCallback(subscribeArg *SubscribeArg) func(args ...inter
 		client, connErr := rpc.DialHTTPPath("tcp", subscribeArg.ClientAddr, subscribeArg.ClientPath)
 		defer client.Close()
 		if connErr != nil {
-			fmt.Errorf("dialing: %v", connErr)
+			log.Printf("dialing: %v", connErr)
 		}
 		clientArg := new(ClientArg)
 		clientArg.Topic = subscribeArg.Topic
@@ -71,7 +71,7 @@ func (server *Server) rpcCallback(subscribeArg *SubscribeArg) func(args ...inter
 		var reply bool
 		err := client.Call(subscribeArg.ServiceMethod, clientArg, &reply)
 		if err != nil {
-			fmt.Errorf("dialing: %v", err)
+			log.Printf("dialing: %v", err)
 		}
 	}
 }
@@ -99,7 +99,7 @@ func (server *Server) Start() error {
 		l, e := net.Listen("tcp", server.address)
 		if e != nil {
 			err = e
-			fmt.Errorf("listen error: %v", e)
+			log.Printf("listen error: %v", e)
 		}
 		service.started = true
 		service.wg.Add(1)
