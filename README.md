@@ -1,7 +1,7 @@
 EventBus
 ======
 
-[![GoDoc](https://godoc.org/github.com/coreybutler/EventBus?status.svg)](https://godoc.org/github.com/coreybutler/EventBus) [![Coverage Status](https://img.shields.io/coveralls/coreybutler/EventBus.svg)](https://coveralls.io/r/coreybutler/EventBus?branch=master) [![Build Status](https://travis-ci.org/coreybutler/EventBus.svg)](https://travis-ci.org/coreybutler/EventBus)
+[![Version](https://img.shields.io/github/tag/coreybutler/EventBus.svg?label=Version)](https://github.com/coreybutler/EventBus)[![GoDoc](https://godoc.org/github.com/coreybutler/EventBus?status.svg)](https://godoc.org/github.com/coreybutler/EventBus) [![Coverage Status](https://img.shields.io/coveralls/coreybutler/EventBus.svg)](https://coveralls.io/r/coreybutler/EventBus?branch=master) [![Build Status](https://travis-ci.org/coreybutler/EventBus.svg)](https://travis-ci.org/coreybutler/EventBus)
 
 This is a modified version of [asaskevich/EventBus](github.com/asaskevich/EventBus). The primary differences are:
 
